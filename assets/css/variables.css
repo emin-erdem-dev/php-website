@@ -1,0 +1,87 @@
+/* ============================================
+   Öğrenci Not Takip Sistemi — CSS Design Tokens
+   ============================================ */
+
+:root {
+    /* ── Colors ── */
+    --nt-black: #0a0a0f;
+    --nt-bg: #0f0f18;
+    --nt-surface-1: #161625;
+    --nt-surface-2: #1e1e32;
+    --nt-surface-3: #2a2a42;
+    --nt-surface-hover: #33335a;
+    --nt-border: rgba(139, 92, 246, 0.12);
+    --nt-border-strong: rgba(139, 92, 246, 0.25);
+
+    /* ── Brand Colors ── */
+    --nt-primary: #8b5cf6;
+    --nt-primary-soft: rgba(139, 92, 246, 0.15);
+    --nt-primary-glow: rgba(139, 92, 246, 0.30);
+    --nt-secondary: #06b6d4;
+    --nt-accent: #f59e0b;
+    --nt-blue: #3b82f6;
+    --nt-cyan: #22d3ee;
+    --nt-green: #10b981;
+    --nt-red: #ef4444;
+    --nt-orange: #f97316;
+    --nt-pink: #ec4899;
+    --nt-yellow: #facc15;
+
+    /* ── Gradient ── */
+    --nt-gradient: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    --nt-gradient-warm: linear-gradient(135deg, #f59e0b, #ef4444);
+    --nt-gradient-cool: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --nt-gradient-success: linear-gradient(135deg, #10b981, #06b6d4);
+
+    /* ── Text ── */
+    --nt-text: #e8e8f0;
+    --nt-text-soft: #a0a0c0;
+    --nt-text-dim: #6b6b8a;
+    --nt-text-muted: #44446a;
+
+    /* ── Typography ── */
+    --nt-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --nt-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --nt-fs-xs: 0.7rem;
+    --nt-fs-sm: 0.8rem;
+    --nt-fs-base: 0.9rem;
+    --nt-fs-md: 1rem;
+    --nt-fs-lg: 1.15rem;
+    --nt-fs-xl: 1.35rem;
+    --nt-fs-2xl: 1.65rem;
+    --nt-fs-3xl: 2rem;
+    --nt-fs-4xl: 2.8rem;
+    --nt-fs-5xl: 3.5rem;
+
+    /* ── Spacing ── */
+    --nt-sp-1: 4px;
+    --nt-sp-2: 8px;
+    --nt-sp-3: 12px;
+    --nt-sp-4: 16px;
+    --nt-sp-5: 20px;
+    --nt-sp-6: 24px;
+    --nt-sp-8: 32px;
+    --nt-sp-10: 40px;
+    --nt-sp-12: 48px;
+    --nt-sp-16: 64px;
+
+    /* ── Radius ── */
+    --nt-radius-xs: 4px;
+    --nt-radius-sm: 6px;
+    --nt-radius-md: 10px;
+    --nt-radius-lg: 16px;
+    --nt-radius-xl: 20px;
+    --nt-radius-full: 999px;
+
+    /* ── Shadows ── */
+    --nt-shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --nt-shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+    --nt-shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+    --nt-shadow-glow: 0 0 30px rgba(139, 92, 246, 0.15);
+
+    /* ── Transitions ── */
+    --nt-t-fast: 0.15s ease;
+    --nt-t-base: 0.25s ease;
+    --nt-t-slow: 0.4s ease;
+    --nt-t-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

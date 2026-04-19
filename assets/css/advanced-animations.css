@@ -1,0 +1,166 @@
+/* ============================================
+   Öğrenci Not Takip — Advanced Animations
+   3D Tilt, Shimmer, Glowing, Pomodoro Rings
+   ============================================ */
+
+/* ── 3D Kart ve Parazit (Tilt & Shine) ── */
+.achieve-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--nt-surface-1);
+    border: 1px solid var(--nt-border);
+    border-radius: var(--nt-radius-lg);
+    padding: var(--nt-sp-6);
+    overflow: hidden;
+    text-align: center;
+    cursor: default;
+}
+.achieve-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.05) 25%, transparent 30%);
+    background-size: 200% auto;
+    animation: shimmer 5s infinite linear;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.achieve-card:hover {
+    transform: translateY(-10px) scale(1.02) rotateX(4deg) rotateY(4deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4), var(--achieve-glow, 0 0 20px rgba(139, 92, 246, 0.3));
+    border-color: var(--achieve-color, var(--nt-primary));
+}
+.achieve-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+
+/* ── Rozet İkonları ── */
+.achieve-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--nt-sp-4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    position: relative;
+    background: var(--nt-surface-2);
+    color: var(--nt-text-dim);
+    transition: all 0.5s ease;
+}
+.achieve-card.unlocked .achieve-icon {
+    background: var(--achieve-color, var(--nt-primary));
+    color: #fff;
+    box-shadow: var(--achieve-glow, 0 0 20px rgba(139, 92, 246, 0.5));
+    animation: float 3s ease-in-out infinite;
+}
+.achieve-card.unlocked .achieve-title {
+    color: #fff;
+}
+.achieve-title {
+    font-size: var(--nt-fs-md);
+    font-weight: 700;
+    color: var(--nt-text-soft);
+    margin-bottom: var(--nt-sp-2);
+}
+.achieve-desc {
+    font-size: var(--nt-fs-sm);
+    color: var(--nt-text-dim);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ── Pomodoro Timer Circle (SVG Animation) ── */
+.pomodoro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--nt-sp-8) 0;
+    position: relative;
+}
+.pomodoro-circle {
+    width: 250px;
+    height: 250px;
+    position: relative;
+}
+.pomodoro-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.pomodoro-bg {
+    fill: none;
+    stroke: var(--nt-surface-2);
+    stroke-width: 8;
+}
+.pomodoro-progress {
+    fill: none;
+    stroke: var(--pomodoro-color, var(--nt-cyan));
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 700;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear, stroke 0.5s ease;
+    filter: drop-shadow(0 0 8px var(--pomodoro-color, var(--nt-cyan)));
+}
+.pomodoro-time {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pomodoro-time h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+    letter-spacing: -2px;
+}
+.pomodoro-time span {
+    font-size: var(--nt-fs-sm);
+    color: var(--nt-text-soft);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.pomodoro-pulse {
+    animation: pomodoroPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pomodoroPulse {
+    0%, 100% { opacity: 1; border-color: rgba(34,211,238, 0.4); box-shadow: 0 0 10px rgba(34,211,238, 0.2); }
+    50% { opacity: .7; border-color: rgba(34,211,238, 0.8); box-shadow: 0 0 25px rgba(34,211,238, 0.6); }
+}
+
+/* ── Sayfa Arkaplan Dalgalanması (Flow Background) ── */
+.flow-bg {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05), transparent 60%);
+    animation: rotateFlow 20s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes rotateFlow {
+    100% { transform: rotate(360deg); }
+}

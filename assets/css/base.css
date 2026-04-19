@@ -1,0 +1,134 @@
+/* ============================================
+   Öğrenci Not Takip — Base Styles
+   Reset, Typography, Scrollbar, Selections
+   ============================================ */
+
+/* ── Reset ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--nt-font);
+    font-size: var(--nt-fs-base);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--nt-text);
+    background-color: var(--nt-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--nt-bg); }
+::-webkit-scrollbar-thumb { background: var(--nt-surface-3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--nt-primary); }
+* { scrollbar-width: thin; scrollbar-color: var(--nt-surface-3) var(--nt-bg); }
+
+/* ── Selection ── */
+::selection { background: rgba(139, 92, 246, 0.30); color: #fff; }
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: var(--nt-sp-4);
+    letter-spacing: -0.02em;
+}
+h1 { font-size: var(--nt-fs-4xl); font-weight: 800; }
+h2 { font-size: var(--nt-fs-3xl); }
+h3 { font-size: var(--nt-fs-2xl); }
+h4 { font-size: var(--nt-fs-xl); }
+
+p {
+    color: var(--nt-text-soft);
+    margin-bottom: var(--nt-sp-4);
+    line-height: 1.7;
+}
+
+a {
+    color: var(--nt-primary);
+    text-decoration: none;
+    transition: color var(--nt-t-fast);
+}
+a:hover { color: var(--nt-cyan); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ── Focus Visible ── */
+:focus-visible {
+    outline: 2px solid var(--nt-primary);
+    outline-offset: 2px;
+}
+
+/* ── Container ── */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--nt-sp-6);
+}
+
+/* ── Section ── */
+.section {
+    padding: var(--nt-sp-16) 0;
+}
+
+/* ── Flash Messages ── */
+.flash-msg {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: var(--nt-sp-3);
+    padding: var(--nt-sp-3) var(--nt-sp-6);
+    background: var(--nt-surface-2);
+    border: 1px solid var(--flash-color, var(--nt-primary));
+    border-left: 4px solid var(--flash-color, var(--nt-primary));
+    border-radius: var(--nt-radius-md);
+    color: var(--nt-text);
+    font-size: var(--nt-fs-sm);
+    box-shadow: var(--nt-shadow-lg);
+    animation: flashSlide 0.4s var(--nt-t-spring);
+    max-width: 500px;
+}
+.flash-msg i { color: var(--flash-color, var(--nt-primary)); font-size: 1.1rem; }
+.flash-close {
+    background: none;
+    border: none;
+    color: var(--nt-text-dim);
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: color var(--nt-t-fast);
+}
+.flash-close:hover { color: var(--nt-text); }
+
+@keyframes flashSlide {
+    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
